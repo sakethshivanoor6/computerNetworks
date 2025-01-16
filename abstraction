@@ -1,0 +1,21 @@
+abstract class Animal {
+    abstract void sound();
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class abstraction {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.sound();
+        myDog.eat();
+    }
+}
+
