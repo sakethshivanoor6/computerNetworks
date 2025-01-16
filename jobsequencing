@@ -1,0 +1,40 @@
+import java.util.Arrays;
+
+class Job {
+    int id, profit, deadline;
+
+    Job(int id, int profit, int deadline) {
+        this.id = id;
+        this.profit = profit;
+        this.deadline = deadline;
+    }
+}
+
+public class JobSequencing {
+    static int[] jobSequencing(Job[] jobs, int n) {
+        Arrays.sort(jobs, (a, b) -> b.profit - a.profit);
+        int[] result = new int[n];
+        boolean[] slot = new boolean[n];
+
+        for (Job job : jobs) {
+            for (int j = Math.min(n - 1, job.deadline - 1); j >= 0; j--) {
+                if (!slot[j]) {
+                    slot[j] = true;
+                    result[j] = job.id;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Job[] jobs = {new Job(1, 100, 2), new Job(2, 19, 1), new Job(3, 27, 2), new Job(4, 25, 1), new Job(5, 15, 3)};
+        int[] result = jobSequencing(jobs, 3);
+
+        System.out.println("Selected Jobs:");
+        for (int jobId : result) {
+            if (jobId != 0) System.out.print(jobId + " ");
+        }
+    }
+}
