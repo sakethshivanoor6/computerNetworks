@@ -1,0 +1,30 @@
+abstract class Calculator {
+    abstract int add(int a, int b); // Abstract method
+}
+
+class MathCalculator extends Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+
+public class methods {
+    static void staticMethod() {
+        System.out.println("This is a static method.");
+    }
+
+    final void finalMethod() {
+        System.out.println("This is a final method and cannot be overridden.");
+    }
+
+    public static void main(String[] args) {
+        MathCalculator calculator = new MathCalculator();
+        System.out.println("Addition: " + calculator.add(5, 3));
+
+        // Corrected the class name from MethodExample to methods
+        methods.staticMethod();
+
+        methods obj = new methods();
+        obj.finalMethod();
+    }
+}
